@@ -1,0 +1,38 @@
+# FastAPI + WebSocket
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+websockets==13.1
+python-dotenv==1.0.1
+
+# Audio Processing
+numpy==2.2.1
+soundfile==0.13.1
+
+# VAD (Silero) + Smart Turn v3
+torch==2.5.1
+torchaudio==2.5.1
+onnxruntime==1.20.1
+transformers==4.47.1
+huggingface_hub==0.27.0
+
+# ============================================
+# LLM Providers - Official SDKs
+# ============================================
+cerebras-cloud-sdk>=1.59.0   # Cerebras - FASTEST (~100ms TTFT)
+groq>=0.13.0                 # Groq - Very fast (~150-200ms TTFT)
+google-genai>=1.56.0         # Gemini - Good balance (~400ms TTFT)
+openai>=1.58.1               # OpenAI - High quality (~600-800ms TTFT)
+
+# ============================================
+# TTS Providers - Official SDKs
+# ============================================
+cartesia>=2.0.17             # Cartesia - Fastest TTS (~50-100ms TTFB)
+elevenlabs>=2.27.0           # ElevenLabs - Most natural voice (~250-400ms TTFB)
+
+# HTTP clients
+httpx>=0.28.1
+aiohttp>=3.11.11
+
+# Utils
+pydantic>=2.10.4
+python-multipart>=0.0.20

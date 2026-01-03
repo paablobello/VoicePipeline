@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #161616;
+  --bg-hover: #1a1a1a;
+  --accent-purple: #8b5cf6;
+  --accent-purple-dim: rgba(139, 92, 246, 0.15);
+  --accent-green: #10b981;
+  --accent-amber: #f59e0b;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1a1;
+  --text-muted: #525252;
+  --border-primary: #1f1f1f;
+  --border-secondary: #2a2a2a;
+  --border-active: #3f3f3f;
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-active);
+}
+
+/* Panel styles - Sharp edges */
+.panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  transition: border-color 0.2s ease;
+}
+
+.panel:hover {
+  border-color: var(--border-secondary);
+}
+
+.panel-active {
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 0 1px var(--accent-purple-dim);
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 500px; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+  overflow: hidden;
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Button styles - Sharp edges */
+.btn-primary {
+  @apply px-4 py-2 bg-white text-black font-medium;
+  @apply transition-all duration-200;
+  @apply hover:bg-gray-200 active:scale-95;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-transparent border border-white/20 text-white font-medium;
+  @apply transition-all duration-200;
+  @apply hover:bg-white/5 hover:border-white/40 active:scale-95;
+}
+
+/* Provider card - Sharp edges */
+.provider-card {
+  @apply relative p-3 border transition-all duration-200 cursor-pointer;
+  @apply bg-[var(--bg-tertiary)] border-[var(--border-primary)];
+}
+
+.provider-card:hover:not(:disabled) {
+  @apply border-[var(--border-active)] bg-[var(--bg-hover)];
+}
+
+.provider-card.active {
+  @apply border-[var(--accent-purple)] bg-[var(--accent-purple-dim)];
+}
+
+.provider-card:disabled {
+  @apply opacity-40 cursor-not-allowed;
+}
+
+/* Audio visualizer - Sharp edges */
+.audio-bar {
+  @apply w-1 bg-white/30 transition-all duration-75;
+  transform-origin: bottom;
+}
+
+.audio-bar.active {
+  @apply bg-white;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Metric bars - Sharp edges */
+.metric-bar {
+  @apply h-1.5 transition-all duration-500 ease-out;
+}
+
+/* Pulse animation for active state */
+.pulse-active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--accent-purple);
+  animation: pulse-ring 2s ease-out infinite;
+}
